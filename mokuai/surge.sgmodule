@@ -191,4 +191,4 @@ http-response-jq ^https:\/\/common\.seeyouyima\.com\/v2\/conf_list$ 'delpaths([[
 12306 = type=http-request, pattern=^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$, script-path=https://kelee.one/Resource/JavaScript/12306/12306_remove_ads.js
 
 [MITM]
-hostname = %APPEND% app.10099.com.cn,acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com,cn-acs.m.cainiao.com, netflow-mtop.cainiao.com, mtop-bff-mtop.cainiao.com, api.m.jd.com, api.pinduoduo.com,bytegecko.com, byteeffecttos.com, zijieapi.com, snssdk.com, pangle.io, pangolin-sdk-toutiao*.com,ad.12306.cn, mobile.12306.cn, gab.122.gov.cn, common.seeyouyima.com, wxproj.seeyouyima.com, circle.seeyouyima.com, circle.xmseeyouyima.com
+hostname = %APPEND% acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com,ad.12306.cn, mobile.12306.cn, cn-acs.m.cainiao.com, guide-acs.m.taobao.com, netflow-mtop.cainiao.com, wxproj.seeyouyima.com, circle.seeyouyima.com, circle.xmseeyouyima.com, common.seeyouyima.com, video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com, api.pinduoduo.com, api.yangkeduo.com,app.10099.com.cn
