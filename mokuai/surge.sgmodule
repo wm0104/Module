@@ -7,6 +7,8 @@
 
 [Rule]
 DOMAIN,ad.12306.cn,DIRECT
+DOMAIN,ad.seeyouyima.com,REJECT,extended-matching,pre-matching
+DOMAIN,axxd.xmseeyouyima.com,REJECT,extended-matching,pre-matching
 [URL Rewrite]
 ^https?://(g-)?acs.m.goofish.com/gw/mtop.splash.ads - reject
 ^https?://(g-)?acs.m.goofish.com/gw/mtop.idle.ad.expose - reject
@@ -71,6 +73,7 @@ DOMAIN,ad.12306.cn,DIRECT
 ^https?://mime.baidu.com/v\d/activity/advertisement - reject
 ^https?:\/\/app3\.qdaily\.com\/app\d\/boot_advertisements\.json - reject
 ^https?:\/\/app\.10099\.com\.cn\/contact-web\/api\/version\/getFlashScreenPage - reject
+^https:\/\/circle\.(xm)?seeyouyima\.com\/v\d\/article_recommend\? - reject
 [Body Rewrite]
 http-response-jq ^https?://acs.m.taobao.com/gw/mtop.alibaba.mytab '.data.model.children |= map(select(.name | contains("营销") | not))'
 http-response-jq ^https?://(g-)?acs.m.goofish.com/gw/mtop.taobao.idle.item.recommend '.data.cardList |= map(select(.cardData.bizType != "mamaAD"))'
@@ -84,6 +87,7 @@ http-response-jq ^https?://(g-)?acs.m.goofish.com/gw/mtop.taobao.idlemtopsearch.
 http-response-jq ^https?://(g-)?acs.m.goofish.com/gw/mtop.taobao.idlemtopsearch.search.discover 'del(.data.resultList)'
 http-response-jq ^https?://(g-)?acs.m.goofish.com/gw/mtop.taobao.idlemtopsearch.search.shade '.data.singleShadeWords =[{}]'
 http-response-jq ^https?://(g-)?acs.m.goofish.com/gw/mtop.taobao.idle.user.strategy.list '.data.strategies = [{}]'
+http-response-jq ^https:\/\/common\.seeyouyima\.com\/v2\/conf_list$ 'delpaths([["data","confList","Minor_mode_card"]])'
 [Script]
 12306.js=type=http-request, pattern=^https?://ad.12306.cn/ad/ser/getAdList, script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/12306.js, requires-body=true, max-size=-1, timeout=60
 cainiao_json.js=type=http-response, pattern=^https?://[a-zA-Z0-9_.-]+.cainiao.com/gw/mtop.cainiao.adkeyword, script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/cainiao_json.js, requires-body=true, max-size=-1, timeout=60
@@ -136,4 +140,4 @@ baiduCloud.adblock.js=type=http-response, pattern=^https://pan.baidu.com/rest/./
 baiduCloud.adblock.js=type=http-response, pattern=^https?://afd.baidu.com/afd/entry, script-path=https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js, requires-body=true, max-size=-1, timeout=60
 baiduCloud.adblock.js=type=http-response, pattern=^https?://pan.baidu.com/api/getsyscfg, script-path=https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js, requires-body=true, max-size=-1, timeout=60
 [MITM]
-hostname = %APPEND% ad.12306.cn,app.10099.com.cn,acs.m.taobao.com,acs-m.freshippo.com,g-acs.m.goofish.com,acs.m.goofish.com,[a-zA-Z0-9_.-]+.taobao.com,api.pinduoduo.com,api.yangkeduo.com,[a-zA-Z0-9_.-]+.cainiao.com,cn-acs.m.cainiao.com,api.coolapk.com,[a-z]+.xiaohongshu.com,interface*.music.163.com,pan.baidu.com,afd.baidu.com,appwk.baidu.com,mime.baidu.com
+hostname = %APPEND% circle.seeyouyima.com, circle.xmseeyouyima.com, common.seeyouyima.com,ad.12306.cn,app.10099.com.cn,acs.m.taobao.com,acs-m.freshippo.com,g-acs.m.goofish.com,acs.m.goofish.com,[a-zA-Z0-9_.-]+.taobao.com,api.pinduoduo.com,api.yangkeduo.com,[a-zA-Z0-9_.-]+.cainiao.com,cn-acs.m.cainiao.com,api.coolapk.com,[a-z]+.xiaohongshu.com,interface*.music.163.com,pan.baidu.com,afd.baidu.com,appwk.baidu.com,mime.baidu.com
