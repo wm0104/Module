@@ -1,5 +1,6 @@
 #!name=电报DC
 #!desc=电报按DC分流
+#!category=工具
 [Rule]
 IP-ASN, 44907, SG, no-resolve
 IP-ASN, 62014, SG, no-resolve
