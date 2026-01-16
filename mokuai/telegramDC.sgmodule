@@ -1,14 +1,14 @@
 #!name=telegramDC
-#!desc=telegram按DC分流,默认Proxy
+#!desc=telegram按DC分流，支持灵活切换地区策略组
 #!category=工具
-#!arguments#!arguments=SG:Proxy,US:Proxy,EU:Proxy
-#!arguments-desc=新加坡:SG,美国:US,荷兰:EU
+#!arguments=SG策略组:DIRECT,US策略组:DIRECT,EU策略组:DIRECT
+#!arguments-desc=SG策略组:选择新加坡节点组,US策略组:选择美国节点组,EU策略组:选择欧洲节点组
 
 [Rule]
-IP-ASN,44907,{{{Proxy}}},no-resolve
-IP-ASN,62014,{{{Proxy}}},no-resolve
-IP-ASN,59930,{{{Proxy}}},no-resolve
-IP-ASN,62041,{{{Proxy}}},no-resolve
-IP-ASN,211157,{{{Proxy}}},no-resolve
-IP-CIDR,5.28.192.0/18,{{{Proxy}}},no-resolve
-IP-CIDR,109.239.140.0/24,{{{Proxy}}},no-resolve
+IP-ASN,44907,{{{SG策略组}}},no-resolve
+IP-ASN,62014,{{{SG策略组}}},no-resolve
+IP-ASN,59930,{{{US策略组}}},no-resolve
+IP-ASN,62041,{{{EU策略组}}},no-resolve
+IP-ASN,211157,{{{EU策略组}}},no-resolve
+IP-CIDR,5.28.192.0/18,{{{EU策略组}}},no-resolve
+IP-CIDR,109.239.140.0/24,{{{EU策略组}}},no-resolve
