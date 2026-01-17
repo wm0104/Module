@@ -1,8 +1,8 @@
 #!name=telegramDC
-#!desc=telegram按DC分流，参数自己选策略组,默认Proxy
+#!desc=telegram按DC分流,参数选自己的策略组
 #!category=工具
 #!arguments=SG:Proxy,US:Proxy,EU:Proxy
-#!arguments-desc=SG:新加坡,US:美国,EU:荷兰
+#!arguments-desc=默认Proxy
 
 [Rule]
 IP-ASN,44907,{{{SG}}},no-resolve
