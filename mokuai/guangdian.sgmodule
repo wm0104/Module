@@ -4,17 +4,11 @@
 
 
 [URL Rewrite]
-^https?:\/\/app\.10099\.com\.cn\/contact-web\/api\/version\/getFlashScreenPage url reject-200
+^https?:\/\/app\.10099\.com\.cn\/contact-web\/api\/version\/getFlashScreenPage url reject
 
 [Body Rewrite]
-http-response-jq ^https?:\/\/m\.client\.10010\.com\/search_service\/search\/searchScrollWord '.["113000004"]=[]'
-http-response-jq ^https?:\/\/m\.client\.10010\.com\/clientIndex\/homefusion\/fuInter 'del(.["HomeFusion.backGroundQuery"], .["HomeFusion.bottomLabel"].bottomMallKey)'
-http-response-jq ^https?:\/\/m\.client\.10010\.com\/clientMyPage\/v\d\/api\/myWallet '.data={}'
-http-response-jq ^https?:\/\/m\.client\.10010\.com\/clientMyPage\/v\d\/api\/myPoints '.data={}'
-http-response-jq ^https?:\/\/m\.client\.10010\.com\/clientMyPage\/v\d\/api\/myColorfulRingtone '.data={}'
-http-response-jq ^https?:\/\/m\.client\.10010\.com\/clientMyPage\/v\d\/api\/newUserInfo '.data={}'
-http-response-jq ^https?:\/\/m\.client\.10010\.com\/clientMyPage\/v\d\/api\/getDeviceInfo '.data={}'
-
+^https?:\/\/app\.10099\.com\.cn\/contact-web\/api\/content\/qryPosterStand url jsonjq-response-body '.data |= map(select(.posterStandName | test("中部业务菜单|导航栏|我的-特色|个人中心|客服")))'
+^https?:\/\/app\.10099\.com\.cn\/contact-web\/api/content\/qryNavigationMenuList url jsonjq-response-body '.data[]?.children |= map(select(.catalogName!="视听"))'
 [MITM]
-hostname = %APPEND% m.client.10010.com, img.client.10010.com
+hostname = %APPEND% 
 
