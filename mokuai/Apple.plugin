@@ -1,26 +1,22 @@
 #!name=AppStore走代理其他Apple请求走直连
-#!desc=AppStore下载走指定策略组，其余Apple服务（登录/同步/更新等）走直连
-#!author=自定义
+#!desc=AppStore下载走PROXY策略，登录/同步/系统更新等其他Apple请求走直连
 #!icon=https://developer.apple.com/assets/elements/icons/app-store/app-store-128x128_2x.png
-#!select=appstore_proxy_group,代理,节点池,自动选择,全局代理,tag=代理策略组选择,desc=选择AppStore下载所用的代理策略组
-#!loon_version=3.2.1+
-#!tag=分流,Apple,AppStore
 
 [Rule]
-# AppStore下载核心域名（指向所选代理策略组）
-- DOMAIN-SUFFIX,apps.apple.com,$persistentStore.read(appstore_proxy_group),tag=AppStore下载
-- DOMAIN-SUFFIX,itunes.apple.com,$persistentStore.read(appstore_proxy_group),tag=AppStore下载
-- DOMAIN-SUFFIX,download.itunes.apple.com,$persistentStore.read(appstore_proxy_group),tag=AppStore下载
-- DOMAIN-SUFFIX,phobos.apple.com,$persistentStore.read(appstore_proxy_group),tag=AppStore下载
-- DOMAIN-SUFFIX,cdn-apple.com,$persistentStore.read(appstore_proxy_group),tag=AppStore下载CDN
-- DOMAIN,gs.apple.com,$persistentStore.read(appstore_proxy_group),tag=下载验证节点
+# AppStore下载相关（强制走PROXY）
+- DOMAIN-SUFFIX,apps.apple.com,PROXY
+- DOMAIN-SUFFIX,itunes.apple.com,PROXY
+- DOMAIN-SUFFIX,download.itunes.apple.com,PROXY
+- DOMAIN-SUFFIX,phobos.apple.com,PROXY
+- DOMAIN-SUFFIX,cdn-apple.com,PROXY
+- DOMAIN,gs.apple.com,PROXY
 
-# 其他Apple服务强制直连
-- DOMAIN-SUFFIX,apple.com,DIRECT,tag=Apple核心服务
-- DOMAIN-SUFFIX,appleid.apple.com,DIRECT,tag=AppleID登录
-- DOMAIN-SUFFIX,icloud.com,DIRECT,tag=iCloud同步
-- DOMAIN-SUFFIX,me.com,DIRECT,tag=Apple关联服务
-- DOMAIN-SUFFIX,mzstatic.com,DIRECT,tag=应用资源
-- DOMAIN-SUFFIX,push.apple.com,DIRECT,tag=推送服务
-- DOMAIN-SUFFIX,appleapis.com,DIRECT,tag=Apple API
-- GEOIP,Apple,DIRECT,tag=Apple IP段兜底
+# 其他Apple服务（强制走直连）
+- DOMAIN-SUFFIX,apple.com,DIRECT
+- DOMAIN-SUFFIX,appleid.apple.com,DIRECT
+- DOMAIN-SUFFIX,icloud.com,DIRECT
+- DOMAIN-SUFFIX,me.com,DIRECT
+- DOMAIN-SUFFIX,mzstatic.com,DIRECT
+- DOMAIN-SUFFIX,push.apple.com,DIRECT
+- DOMAIN-SUFFIX,appleapis.com,DIRECT
+- GEOIP,Apple,DIRECT
