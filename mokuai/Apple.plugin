@@ -3,20 +3,17 @@
 #!icon=https://developer.apple.com/assets/elements/icons/app-store/app-store-128x128_2x.png
 
 [Rule]
-# AppStore下载相关（强制走PROXY）
-- DOMAIN-SUFFIX,apps.apple.com,PROXY
-- DOMAIN-SUFFIX,itunes.apple.com,PROXY
-- DOMAIN-SUFFIX,download.itunes.apple.com,PROXY
-- DOMAIN-SUFFIX,phobos.apple.com,PROXY
-- DOMAIN-SUFFIX,cdn-apple.com,PROXY
-- DOMAIN,gs.apple.com,PROXY
-
-# 其他Apple服务（强制走直连）
-- DOMAIN-SUFFIX,apple.com,DIRECT
-- DOMAIN-SUFFIX,appleid.apple.com,DIRECT
-- DOMAIN-SUFFIX,icloud.com,DIRECT
-- DOMAIN-SUFFIX,me.com,DIRECT
-- DOMAIN-SUFFIX,mzstatic.com,DIRECT
-- DOMAIN-SUFFIX,push.apple.com,DIRECT
-- DOMAIN-SUFFIX,appleapis.com,DIRECT
-- GEOIP,Apple,DIRECT
+DOMAIN-SUFFIX,apps.apple.com,PROXY
+DOMAIN-SUFFIX,itunes.apple.com,PROXY
+DOMAIN-SUFFIX,download.itunes.apple.com,PROXY
+DOMAIN-SUFFIX,phobos.apple.com,PROXY
+DOMAIN-SUFFIX,cdn-apple.com,PROXY
+DOMAIN,gs.apple.com,PROXY
+DOMAIN-SUFFIX,apple.com,DIRECT
+DOMAIN-SUFFIX,appleid.apple.com,DIRECT
+DOMAIN-SUFFIX,icloud.com,DIRECT
+DOMAIN-SUFFIX,me.com,DIRECT
+DOMAIN-SUFFIX,mzstatic.com,DIRECT
+DOMAIN-SUFFIX,push.apple.com,DIRECT
+DOMAIN-SUFFIX,appleapis.com,DIRECT
+GEOIP,Apple,DIRECT
