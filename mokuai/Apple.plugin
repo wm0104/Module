@@ -1,5 +1,5 @@
 #!name=AppStore走代理其他Apple请求走直连
-#!desc=AppStore下载走PROXY策略，登录/同步/系统更新等其他Apple请求走直连
+#!desc=AppStore下载走代理默认PROXY 其它Apple请求走DIRECT
 #!icon=https://developer.apple.com/assets/elements/icons/app-store/app-store-128x128_2x.png
 
 [Rule]
