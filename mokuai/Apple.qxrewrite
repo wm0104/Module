@@ -1,4 +1,2 @@
-#!name=Apple分流
-#!desc=AppStore下载走代理,其他Apple服务走直连
 [Rule]
 DOMAIN-SUFFIX,apps.apple.com,Proxy
