@@ -1,30 +1,25 @@
 /**
- * 📅 中国传统节日倒计时（完整版）
+ * 📅 节日倒计时小组件（仅保留中国节假日）
  */
 
-// ========== 中国传统节日全集 ==========
+// ========== 公历法定节假日 ==========
+const HOLIDAYS = {
+  '01-01': { name: '元旦', type: 'holiday' },
+  '04-04': { name: '清明', type: 'holiday' },
+  '05-01': { name: '劳动节', type: 'holiday' },
+  '06-01': { name: '儿童节', type: 'holiday' },
+  '10-01': { name: '国庆节', type: 'holiday' },
+};
+
+// ========== 农历传统节日 ==========
 const LUNAR_HOLIDAYS = {
   '1-1': '春节',
-  '1-2': '初二',
-  '1-3': '初三',
-  '1-4': '初四',
-  '1-5': '初五',
-  '1-6': '初六',
-  '1-7': '人日',
   '1-15': '元宵节',
-  '2-2': '龙抬头',
-  '2-19': '观音诞',
-  '3-3': '上巳节',
-  '4-8': '浴佛节',
   '5-5': '端午节',
-  '6-6': '天贶节',
   '7-7': '七夕节',
-  '7-15': '中元节',
   '8-15': '中秋节',
   '9-9': '重阳节',
-  '10-1': '寒衣节',
   '12-8': '腊八节',
-  '12-23': '小年',
   '12-30': '除夕'
 };
 
@@ -115,6 +110,16 @@ function daysDiff(from, to) {
 
 function getCountdowns() {
   const now = new Date(), year = now.getFullYear(), results = [];
+
+  // 公历节日
+  for (const [k, v] of Object.entries(HOLIDAYS)) {
+    const [m, d] = k.split('-').map(Number);
+    let t = new Date(year, m - 1, d);
+    if (t < now) t = new Date(year + 1, m - 1, d);
+    results.push({ name: v.name, days: daysDiff(now, t) });
+  }
+
+  // 农历节日
   try {
     const lunar = Lunar.getLunarDate(now);
     for (const [k, name] of Object.entries(LUNAR_HOLIDAYS)) {
@@ -122,9 +127,10 @@ function getCountdowns() {
       let tm = (lunar.month > lm || (lunar.month === lm && lunar.day >= ld)) ? lm + 12 : lm;
       let t = new Date(year, tm - 1, ld);
       if (t < now) t = new Date(year + 1, tm - 1, ld);
-      results.push({ name, days: daysDiff(now, t), type: 'lunar' });
+      results.push({ name, days: daysDiff(now, t) });
     }
   } catch (e) {}
+
   results.sort((a, b) => a.days - b.days);
   return results;
 }
