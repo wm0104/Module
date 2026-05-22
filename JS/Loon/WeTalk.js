@@ -1,7 +1,6 @@
 //2026/04/27
 /*
 @Name：WeTalk 自动化签到+视频奖励（Loon 适配版）
-@Author：TG@ZenMoFiShi
 @Modified：适配 Loon 运行环境，修复 $prefs/$notify/$task.fetch 兼容性问题
 
 [Script]
