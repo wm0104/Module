@@ -1,5 +1,5 @@
-#!name=telegramDC
-#!desc=telegram按DC分流,参数选自己的策略组
+#!name=TelegramDC
+#!desc=Telegram按DC分流,参数选自己的策略组
 #!category=工具
 #!arguments=SG:Proxy,US:Proxy,EU:Proxy
 #!arguments-desc=默认Proxy
