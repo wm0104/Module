@@ -1,5 +1,5 @@
-#!name=telegramDC
-#!desc=telegram按DC分流
+#!name=TelegramDC
+#!desc=Telegram按DC分流
 #!icon=https://i.imgur.com/9Z7X7QH.png
 
 [Rule]
