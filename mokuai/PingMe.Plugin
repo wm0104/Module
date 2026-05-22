@@ -1,0 +1,16 @@
+#!name=WeTalk自动签到
+#!desc=每日多时段签到+视频收益，适配Loon
+#!author=wm0104
+#!homepage=https://github.com/wm0104/Module
+#!version=1.0
+#!tag=WeTalk,签到,自动任务
+
+[MitM]
+hostname = api.wetalkapp.com
+
+[Script]
+# 账号抓包脚本
+WeTalk账号捕获 = script-request-header, ^https:\/\/api\.wetalkapp\.com\/app\/queryBalanceAndBonus, tag=WeTalk捕获, script-path=https://github.com/wm0104/Module/raw/refs/heads/main/JS/Loon/WeTalk.js, requires-body=false
+
+# 定时任务：8点、11点、14点、18点 整点执行
+WeTalk定时签到 = script, cron "0 8,11,14,18 * * *", tag=WeTalk定时, script-path=https://github.com/wm0104/Module/raw/refs/heads/main/JS/Loon/WeTalk.js, timeout=120
