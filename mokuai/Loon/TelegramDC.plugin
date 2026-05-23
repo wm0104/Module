@@ -1,12 +1,11 @@
 #!name=TelegramDC
 #!desc=Telegram按DC分流
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
-
 [Rule]
-IP-ASN,44907,SG,no-resolve
-IP-ASN,62014,SG,no-resolve
-IP-ASN,59930,US,no-resolve
-IP-ASN,62041,EU,no-resolve
-IP-ASN,211157,EU,no-resolve
-IP-CIDR,5.28.192.0/18,EU,no-resolve
-IP-CIDR,109.239.140.0/24,EU,no-resolve
+IP-ASN, 62014, SG
+IP-ASN, 62041, EU
+IP-ASN, 44907, EU
+IP-ASN, 59930, US
+IP-ASN, 211157, US
+IP-CIDR, 5.28.192.0/18, EU, no-resolve
+IP-CIDR, 109.239.140.0/24, EU, no-resolve
