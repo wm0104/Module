@@ -1,12 +1,30 @@
 #!name=TelegramDC
 #!desc=Telegram按DC分流
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+#!author=mokuai/Loon
+#!tag=Telegram
 
 [Rule]
+# 新加坡 DC (DC5)
 IP-ASN,44907,SG,no-resolve
 IP-ASN,62014,SG,no-resolve
+IP-CIDR,149.154.160.0/20,SG,no-resolve
+IP-CIDR,91.108.128.0/17,SG,no-resolve
+
+# 美国 DC (DC1/DC2)
 IP-ASN,59930,US,no-resolve
+IP-CIDR,149.154.160.0/20,US,no-resolve
+IP-CIDR,91.108.128.0/17,US,no-resolve
+
+# 欧洲 DC (DC3/DC4)
 IP-ASN,62041,EU,no-resolve
 IP-ASN,211157,EU,no-resolve
 IP-CIDR,5.28.192.0/18,EU,no-resolve
 IP-CIDR,109.239.140.0/24,EU,no-resolve
+IP-CIDR,149.154.160.0/20,EU,no-resolve
+IP-CIDR,91.108.128.0/17,EU,no-resolve
+
+# IPv6 补充（不改策略，直接沿用你的 EU/US/SG）
+IP-CIDR6,2001:67c:4e8::/48,EU,no-resolve
+IP-CIDR6,2001:b28:f23d::/48,US,no-resolve
+IP-CIDR6,2001:67c:4ec::/48,SG,no-resolve
