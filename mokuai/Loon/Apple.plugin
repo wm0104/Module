@@ -1,5 +1,5 @@
-#!name=Apple分流增强
-#!desc=AppStore/苹果下载资源走PROXY，其余Apple服务全部直连Direct
+#!name=Apple分流
+#!desc=AppStore走PROXY，其余Apple服务走Direct
 #!homepage=https://github.com/wm0104/Module/raw/refs/heads/main/mokuai/Loon/Apple.plugin
 #!icon=https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/03CNSoft/apple.png
 
@@ -16,7 +16,10 @@ DOMAIN-SUFFIX,v.aaplimg.com,PROXY
 DOMAIN-SUFFIX,gg.apple.com,PROXY
 DOMAIN-SUFFIX,mesu.apple.com,PROXY
 DOMAIN-SUFFIX,xp.apple.com,PROXY
-#    
+DOMAIN-SUFFIX,devstreaming-cdn.apple.com,PROXY
+DOMAIN-SUFFIX,iosapps.itunes.apple.com,PROXY
+DOMAIN-SUFFIX,play.itunes.apple.com,PROXY
+
 DOMAIN-SUFFIX,apple.com,DIRECT
 DOMAIN-SUFFIX,icloud.com,DIRECT
 DOMAIN-SUFFIX,me.com,DIRECT
@@ -27,3 +30,5 @@ DOMAIN-SUFFIX,push.apple.com,DIRECT
 DOMAIN-SUFFIX,captive.apple.com,DIRECT
 DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
 DOMAIN-SUFFIX,apple-cloudkit.com,DIRECT
+DOMAIN-SUFFIX,icloud.com.cn,DIRECT
+DOMAIN-SUFFIX,akadns.net,DIRECT
