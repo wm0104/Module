@@ -1,72 +1,65 @@
 #!name=Apple分流
-#!desc=AppStore下载走代理，其它Apple服务直连
+#!desc=仅AppStore下载与更新走代理，其它Apple服务直连
 #!category=工具
 #!arguments=Proxy:DIRECT
-#!arguments-desc=Proxy: 选择策略组，默认DIRECT
+#!arguments-desc=Proxy:选择代理策略组
 
 
 [Rule]
 
-# =====================
-# App Store 相关走代理
-# =====================
+# =========================
+# App Store 服务（代理）
+# =========================
 
 DOMAIN-SUFFIX,apps.apple.com,{{{Proxy}}}
+
 DOMAIN-SUFFIX,itunes.apple.com,{{{Proxy}}}
 DOMAIN-SUFFIX,download.itunes.apple.com,{{{Proxy}}}
 DOMAIN-SUFFIX,phobos.apple.com,{{{Proxy}}}
+
 DOMAIN-SUFFIX,ax.itunes.apple.com,{{{Proxy}}}
 DOMAIN-SUFFIX,su.itunes.apple.com,{{{Proxy}}}
 
-# App资源/CDN
 DOMAIN-SUFFIX,mzstatic.com,{{{Proxy}}}
-DOMAIN-SUFFIX,cdn-apple.com,{{{Proxy}}}
-DOMAIN-SUFFIX,akamaiedge.net,{{{Proxy}}}
-DOMAIN-SUFFIX,apple.com.edgekey.net,{{{Proxy}}}
 
-# App Store Connect
 DOMAIN-SUFFIX,appstoreconnect.apple.com,{{{Proxy}}}
 
 
-# =====================
+# App Store进程
+PROCESS-NAME,AppStore,{{{Proxy}}}
+PROCESS-NAME,"App Store",{{{Proxy}}}
+
+
+# =========================
 # Apple服务直连
-# =====================
+# =========================
 
 DOMAIN-SUFFIX,icloud.com,DIRECT
 DOMAIN-SUFFIX,icloud-content.com,DIRECT
+
 DOMAIN-SUFFIX,me.com,DIRECT
 DOMAIN-SUFFIX,mac.com,DIRECT
-
-DOMAIN-SUFFIX,apple-dns.net,DIRECT
-DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
 
 DOMAIN-SUFFIX,music.apple.com,DIRECT
 DOMAIN-SUFFIX,tv.apple.com,DIRECT
 
 DOMAIN-SUFFIX,imessage.apple.com,DIRECT
+
 DOMAIN-SUFFIX,applepay-api.apple.com,DIRECT
+
+DOMAIN-SUFFIX,apple-dns.net,DIRECT
+DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
 
 DOMAIN-SUFFIX,app-analytics.apple.com,DIRECT
 
 
-# =====================
-# Apple IP段
-# =====================
-
+# Apple IP
 IP-CIDR,17.0.0.0/8,DIRECT,no-resolve
 
 
-# =====================
-# App Store进程强制代理
-# =====================
-
-PROCESS-NAME,AppStore,{{{Proxy}}}
-PROCESS-NAME,"App Store",{{{Proxy}}}
-
-
-# =====================
-# Apple主域最后直连
-# 必须放最后
-# =====================
+# =========================
+# Apple总规则兜底
+# 必须最后
+# =========================
 
 DOMAIN-SUFFIX,apple.com,DIRECT
