@@ -1,31 +1,72 @@
 #!name=Apple分流
-#!desc=AppStore下载走代理,其他Apple服务走直连,参数选择策略组
+#!desc=AppStore下载走代理，其它Apple服务直连
 #!category=工具
 #!arguments=Proxy:DIRECT
-#!arguments-desc=Proxy: 选择策略组,默认DIRECT
+#!arguments-desc=Proxy: 选择策略组，默认DIRECT
+
+
 [Rule]
+
+# =====================
+# App Store 相关走代理
+# =====================
+
 DOMAIN-SUFFIX,apps.apple.com,{{{Proxy}}}
 DOMAIN-SUFFIX,itunes.apple.com,{{{Proxy}}}
 DOMAIN-SUFFIX,download.itunes.apple.com,{{{Proxy}}}
 DOMAIN-SUFFIX,phobos.apple.com,{{{Proxy}}}
 DOMAIN-SUFFIX,ax.itunes.apple.com,{{{Proxy}}}
 DOMAIN-SUFFIX,su.itunes.apple.com,{{{Proxy}}}
+
+# App资源/CDN
 DOMAIN-SUFFIX,mzstatic.com,{{{Proxy}}}
+DOMAIN-SUFFIX,cdn-apple.com,{{{Proxy}}}
+DOMAIN-SUFFIX,akamaiedge.net,{{{Proxy}}}
+DOMAIN-SUFFIX,apple.com.edgekey.net,{{{Proxy}}}
+
+# App Store Connect
 DOMAIN-SUFFIX,appstoreconnect.apple.com,{{{Proxy}}}
-DOMAIN-SUFFIX,apple.com,DIRECT
+
+
+# =====================
+# Apple服务直连
+# =====================
+
 DOMAIN-SUFFIX,icloud.com,DIRECT
+DOMAIN-SUFFIX,icloud-content.com,DIRECT
 DOMAIN-SUFFIX,me.com,DIRECT
 DOMAIN-SUFFIX,mac.com,DIRECT
+
 DOMAIN-SUFFIX,apple-dns.net,DIRECT
 DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
-DOMAIN-SUFFIX,app-analytics.apple.com,DIRECT
+
 DOMAIN-SUFFIX,music.apple.com,DIRECT
 DOMAIN-SUFFIX,tv.apple.com,DIRECT
+
 DOMAIN-SUFFIX,imessage.apple.com,DIRECT
 DOMAIN-SUFFIX,applepay-api.apple.com,DIRECT
-DOMAIN-SUFFIX,cdn-apple.com,DIRECT
+
+DOMAIN-SUFFIX,app-analytics.apple.com,DIRECT
+
+
+# =====================
+# Apple IP段
+# =====================
+
 IP-CIDR,17.0.0.0/8,DIRECT,no-resolve
-IP-CIDR,143.175.0.0/16,DIRECT,no-resolve
-IP-CIDR,203.0.113.0/24,DIRECT,no-resolve
+
+
+# =====================
+# App Store进程强制代理
+# =====================
+
 PROCESS-NAME,AppStore,{{{Proxy}}}
 PROCESS-NAME,"App Store",{{{Proxy}}}
+
+
+# =====================
+# Apple主域最后直连
+# 必须放最后
+# =====================
+
+DOMAIN-SUFFIX,apple.com,DIRECT
